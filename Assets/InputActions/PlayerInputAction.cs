@@ -43,6 +43,14 @@ namespace SpaceShooterV3.InputActions
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""BarrelRoll"",
+                    ""type"": ""Button"",
+                    ""id"": ""925bbe63-0b56-4914-b068-8fd24d86b19b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""MultiTap""
                 }
             ],
             ""bindings"": [
@@ -263,6 +271,17 @@ namespace SpaceShooterV3.InputActions
                     ""processors"": """",
                     ""groups"": ""XR"",
                     ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38927b94-1366-428c-becc-2c4f35a1ecb8"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BarrelRoll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -843,6 +862,7 @@ namespace SpaceShooterV3.InputActions
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
             m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+            m_Player_BarrelRoll = m_Player.FindAction("BarrelRoll", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -907,6 +927,7 @@ namespace SpaceShooterV3.InputActions
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Look;
         private readonly InputAction m_Player_Fire;
+        private readonly InputAction m_Player_BarrelRoll;
         public struct PlayerActions
         {
             private @PlayerInputAction m_Wrapper;
@@ -914,6 +935,7 @@ namespace SpaceShooterV3.InputActions
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Look => m_Wrapper.m_Player_Look;
             public InputAction @Fire => m_Wrapper.m_Player_Fire;
+            public InputAction @BarrelRoll => m_Wrapper.m_Player_BarrelRoll;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -932,6 +954,9 @@ namespace SpaceShooterV3.InputActions
                     @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                     @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                     @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                    @BarrelRoll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBarrelRoll;
+                    @BarrelRoll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBarrelRoll;
+                    @BarrelRoll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBarrelRoll;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -945,6 +970,9 @@ namespace SpaceShooterV3.InputActions
                     @Fire.started += instance.OnFire;
                     @Fire.performed += instance.OnFire;
                     @Fire.canceled += instance.OnFire;
+                    @BarrelRoll.started += instance.OnBarrelRoll;
+                    @BarrelRoll.performed += instance.OnBarrelRoll;
+                    @BarrelRoll.canceled += instance.OnBarrelRoll;
                 }
             }
         }
@@ -1104,6 +1132,7 @@ namespace SpaceShooterV3.InputActions
             void OnMove(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
             void OnFire(InputAction.CallbackContext context);
+            void OnBarrelRoll(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

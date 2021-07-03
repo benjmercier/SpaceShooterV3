@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "BarrelRoll",
+                    "type": "Button",
+                    "id": "925bbe63-0b56-4914-b068-8fd24d86b19b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "MultiTap"
                 }
             ],
             "bindings": [
@@ -248,6 +256,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "38927b94-1366-428c-becc-2c4f35a1ecb8",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BarrelRoll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
