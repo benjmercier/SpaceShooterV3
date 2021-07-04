@@ -15,6 +15,7 @@ namespace SpaceShooterV3.Scripts.Controllers
         // Events
         public static Action<Vector3> onMoveInput;
         public static Action<float> onBarrelRollInput;
+        public static Action onFireInput;
 
         private void Start()
         {
@@ -58,7 +59,15 @@ namespace SpaceShooterV3.Scripts.Controllers
 
         public void OnFire(InputAction.CallbackContext context)
         {
+            if (context.performed)
+            {
+                OnFireInput();
+            }
+        }
 
+        private void OnFireInput()
+        {
+            onFireInput?.Invoke();
         }
     }
 }
