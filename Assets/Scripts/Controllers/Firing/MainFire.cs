@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SpaceShooterV3.Scripts.Controllers.Firing
@@ -16,7 +14,7 @@ namespace SpaceShooterV3.Scripts.Controllers.Firing
         private float _fireRate = 0.1f;
         private float _nextFire = -1f;
 
-        public static Func<int, GameObject> onRequestFromPool;
+        public static Func<int, int, GameObject> onRequestFromPool;
 
         private void Start()
         {
@@ -39,14 +37,14 @@ namespace SpaceShooterV3.Scripts.Controllers.Firing
             {
                 _nextFire = Time.time + _fireRate;
 
-                _weaponFired = OnRequestFromPool(0);
+                _weaponFired = OnRequestFromPool(0, 0);
                 _weaponFired.transform.position = _firingPos.position;
             }            
         }
 
-        private GameObject OnRequestFromPool(int poolIndex)
+        private GameObject OnRequestFromPool(int containerIndex, int poolIndex)
         {
-            return onRequestFromPool?.Invoke(poolIndex);
+            return onRequestFromPool?.Invoke(containerIndex, poolIndex);
         }
     }
 }
