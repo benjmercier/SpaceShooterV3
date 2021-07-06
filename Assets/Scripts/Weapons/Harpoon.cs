@@ -9,7 +9,9 @@ namespace SpaceShooterV3.Scripts.Weapons
         [SerializeField]
         private float _speed = 15f;
 
-        private void Start()
+        private WaitForSeconds _waitToDisable = new WaitForSeconds(5f);
+
+        private void OnEnable()
         {
             StartCoroutine(ObjDisableRoutine());
         }
@@ -21,7 +23,7 @@ namespace SpaceShooterV3.Scripts.Weapons
 
         private IEnumerator ObjDisableRoutine()
         {
-            yield return new WaitForSeconds(5f);
+            yield return _waitToDisable;
 
             if (gameObject.activeInHierarchy)
             {
