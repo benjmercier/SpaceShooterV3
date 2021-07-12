@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace SpaceShooterV3.Scripts.Controllers.Firing
+namespace SpaceShooterV3.Scripts.Player.Firing
 {
     public class MainFire : MonoBehaviour
     {

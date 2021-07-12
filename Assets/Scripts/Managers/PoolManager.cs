@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using SpaceShooterV3.Scripts.Helpers;
 using SpaceShooterV3.Scripts.CustomClasses;
-using SpaceShooterV3.Scripts.Controllers.Firing;
+using SpaceShooterV3.Scripts.Player.Firing;
 
 namespace SpaceShooterV3.Scripts.Managers
 {

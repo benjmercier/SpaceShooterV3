@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace SpaceShooterV3.Scripts.Controllers.Movement
+namespace SpaceShooterV3.Scripts.Player.Movement
 {
     public class BarrelRoll : MonoBehaviour
     {

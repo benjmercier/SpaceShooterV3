@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using SpaceShooterV3.InputActions;
 
-namespace SpaceShooterV3.Scripts.Controllers
+namespace SpaceShooterV3.Scripts.Player
 {
     public class PlayerInputController : MonoBehaviour, PlayerInputAction.IPlayerActions
     {
