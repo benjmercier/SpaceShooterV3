@@ -1,16 +1,14 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace SpaceShooterV3.Scripts.Enemies
+namespace SpaceShooterV3.Scripts.AI.Agents.Enemies
 {
     public abstract class BaseEnemy : MonoBehaviour
     {
         protected Vector3 _spawnPos;
         protected Vector3 _targetPos;
 
-        protected Vector2 _minMaxZ = new Vector2(-10f, 40f);
+        protected Vector2 _minMaxZ = new Vector2(-15f, 45f);
         protected Vector2 _minMaxX = new Vector2(-33.5f, 33.5f);
 
         protected float _randomX;
@@ -26,7 +24,7 @@ namespace SpaceShooterV3.Scripts.Enemies
 
         protected virtual void Start()
         {
-            //_steeringTarget = Vector3.back;
+            
         }
 
         protected void OnEnable()
@@ -89,8 +87,6 @@ namespace SpaceShooterV3.Scripts.Enemies
                     break;
             }
         }
-
-        
     }
 }
 

@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 451847926}
   - component: {fileID: 451847930}
   - component: {fileID: 451847929}
-  - component: {fileID: 5585153263912136279}
-  - component: {fileID: 451847927}
   - component: {fileID: 451847928}
+  - component: {fileID: 451847927}
   m_Layer: 0
   m_Name: ObjDetection
   m_TagString: Untagged
@@ -45,7 +44,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 451847924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa05a66dbe26a34c95dbcefddf925ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 217a758584032eb40bbcd56182cdffde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _parentObj: {fileID: 6737851657179486401}
@@ -98,20 +97,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5585153263912136279
-CapsuleCollider:
+--- !u!135 &451847928
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451847924}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
-  m_Height: 20
-  m_Direction: 2
-  m_Center: {x: -0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 2.5
+  m_Center: {x: 0, y: 0, z: 2.5}
 --- !u!54 &451847927
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,19 +126,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &451847928
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451847924}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &19872688859567132
 GameObject:
   m_ObjectHideFlags: 0
@@ -22994,7 +22979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9e79e8849c4394eac899d0708ed5a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _barrelRollSpeed: 0.75
 --- !u!114 &2070177199600490919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23004,7 +22988,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6737851657179486401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef070c6e0d5f7e149817202f272e4fff, type: 3}
+  m_Script: {fileID: 11500000, guid: dd6aba3b4b1a0e444864dac87d8a1991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 12.5
@@ -23014,7 +22998,11 @@ MonoBehaviour:
     useArrival: 0
     _arrivalRadius: 10
   _useFlee: 0
-  _useAvoidance: 1
+  _useAvoidance: 0
+  _avoidance:
+    _maxAvoidanceForce: 10
+  _allowBarrelRoll: 0
+  _barrelRollSpeed: 0.75
 --- !u!65 &3386382854614533008
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23024,7 +23012,7 @@ BoxCollider:
   m_GameObject: {fileID: 6737851657179486401}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1.2, z: 5.5}
   m_Center: {x: -0, y: 0.05, z: 0}

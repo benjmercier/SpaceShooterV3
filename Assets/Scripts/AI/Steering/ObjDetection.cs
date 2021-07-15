@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace SpaceShooterV3.Scripts.Attacking
+namespace SpaceShooterV3.Scripts.AI.Steering
 {
     public class ObjDetection : MonoBehaviour
     {

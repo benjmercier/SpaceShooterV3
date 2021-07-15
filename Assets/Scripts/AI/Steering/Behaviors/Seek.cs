@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace SpaceShooterV3.Scripts.AISteering.Behaviors
+namespace SpaceShooterV3.Scripts.AI.Steering.Behaviors
 {
     [System.Serializable]
     public class Seek

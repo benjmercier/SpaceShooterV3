@@ -17,7 +17,6 @@ namespace SpaceShooterV3.Scripts.Player.Movement
 
         private float _elapsedTime = 0f;
 
-
         private void OnEnable()
         {
             PlayerInputController.onBarrelRollInput += CalculateBarrelRoll;

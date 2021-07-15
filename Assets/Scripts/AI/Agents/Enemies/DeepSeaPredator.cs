@@ -2,21 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SpaceShooterV3.Scripts.Enemies
+namespace SpaceShooterV3.Scripts.AI.Agents.Enemies
 {
     public class DeepSeaPredator : BaseEnemy
     {
-        private bool _isActive = false;
-
-        [SerializeField]
-        private float _barrelRollSpeed = 0.75f;
-
-        private Vector3 _startEulerAngles;
-
-        private float _endEulerAngleZ,
-            _currentAngleZ;
-
-        private float _elapsedTime = 0f;
+        
 
 
 

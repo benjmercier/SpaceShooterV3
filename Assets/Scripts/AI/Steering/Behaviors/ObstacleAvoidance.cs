@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace SpaceShooterV3.Scripts.AISteering.Behaviors
+namespace SpaceShooterV3.Scripts.AI.Steering.Behaviors
 {
     [System.Serializable]
     public class ObstacleAvoidance
@@ -14,8 +12,6 @@ namespace SpaceShooterV3.Scripts.AISteering.Behaviors
         [SerializeField]
         private float _maxAvoidanceForce = 10f;
         private float _dynamicView;
-
-        
 
         public Vector3 CalculateAvoidance(Vector3 agentPos, GameObject target, Vector3 agentVel, float speed)
         {
@@ -37,8 +33,6 @@ namespace SpaceShooterV3.Scripts.AISteering.Behaviors
 
             return _avoidanceForce;
         }
-
-        
     }
 }
 

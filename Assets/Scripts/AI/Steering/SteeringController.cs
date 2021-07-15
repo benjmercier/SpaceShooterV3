@@ -1,12 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using SpaceShooterV3.Scripts.Interfaces;
-using SpaceShooterV3.Scripts.AISteering.Behaviors;
-using SpaceShooterV3.Scripts.Attacking;
-using SpaceShooterV3.Scripts.Enemies;
+using SpaceShooterV3.Scripts.AI.Steering.Behaviors;
+using SpaceShooterV3.Scripts.AI.Agents.Enemies;
 
-namespace SpaceShooterV3.Scripts.AISteering
+namespace SpaceShooterV3.Scripts.AI.Steering
 {
     [System.Serializable]
     public class SteeringController : MonoBehaviour, IAutonomousAgent
@@ -41,6 +39,8 @@ namespace SpaceShooterV3.Scripts.AISteering
         private bool _useAvoidance = false;
         [SerializeField]
         private ObstacleAvoidance _avoidance;
+        [SerializeField]
+        private bool _allowBarrelRoll = false;
 
 
         private bool _isActive = false;
@@ -91,7 +91,15 @@ namespace SpaceShooterV3.Scripts.AISteering
                 {
                     _useSeek = false;
                     _steeringVelocity += _avoidance.CalculateAvoidance(transform.position, _targetObj, _agentVelocity, _maxSpeed);
-                    CalculateBarrelRoll(_steeringVelocity.x);
+
+                    if (_allowBarrelRoll)
+                    {
+                        CalculateBarrelRoll(_steeringVelocity.x);
+                    }     
+                    else
+                    {
+                        _useSeek = true;
+                    }
                 }
             }
 
@@ -143,13 +151,6 @@ namespace SpaceShooterV3.Scripts.AISteering
                 _targetDetected = inRange;
             }
         }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            
-        }
-
-
 
         private void CalculateBarrelRoll(float axis)
         {
