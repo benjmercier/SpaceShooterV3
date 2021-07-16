@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using SpaceShooterV3.Scripts.Interfaces;
 
 namespace SpaceShooterV3.Scripts.AI.Agents.Enemies
 {
@@ -16,6 +17,7 @@ namespace SpaceShooterV3.Scripts.AI.Agents.Enemies
         protected bool _targetDetected = false;
 
         public static Action<GameObject, Vector3> onSetTargetPos;
+        public static Action<GameObject, float> onDamageReceived;
 
         protected virtual void Awake()
         {
@@ -68,6 +70,11 @@ namespace SpaceShooterV3.Scripts.AI.Agents.Enemies
             }
         }
 
+        private void OnDamageReceived(GameObject damagedObj, float damageAmount)
+        {
+            onDamageReceived?.Invoke(damagedObj, damageAmount);
+        }
+
         protected virtual void OnTriggerEnter(Collider other)
         {
             var tag = other.tag;
@@ -75,12 +82,14 @@ namespace SpaceShooterV3.Scripts.AI.Agents.Enemies
             switch (tag)
             {
                 case "Player":
-                    Destroy(this.gameObject);
+                    //Destroy(this.gameObject);
                     break;
 
                 case "MainFire":
                     other.gameObject.SetActive(false);
-                    Destroy(this.gameObject);
+
+                    OnDamageReceived(this.gameObject, 15f);
+                    
                     break;
 
                 default:

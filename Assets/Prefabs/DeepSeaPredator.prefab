@@ -22943,6 +22943,7 @@ GameObject:
   - component: {fileID: 7911634515478764375}
   - component: {fileID: -4860542716293063300}
   - component: {fileID: 2070177199600490919}
+  - component: {fileID: 793669312334179180}
   - component: {fileID: 3386382854614533008}
   m_Layer: 0
   m_Name: DeepSeaPredator
@@ -23003,6 +23004,20 @@ MonoBehaviour:
     _maxAvoidanceForce: 10
   _allowBarrelRoll: 0
   _barrelRollSpeed: 0.75
+--- !u!114 &793669312334179180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6737851657179486401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 564dbe62e449683489d1de80eefbde14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _maxArmor: 100
 --- !u!65 &3386382854614533008
 BoxCollider:
   m_ObjectHideFlags: 0
