@@ -24,11 +24,13 @@ namespace SpaceShooterV3.Scripts.Managers
         private void OnEnable()
         {
             MainFire.onRequestFromPool += ActivateObjFromPool;
+            SpawnManager.onRequestFromPool += ActivateObjFromPool;
         }
 
         private void OnDisable()
         {
             MainFire.onRequestFromPool -= ActivateObjFromPool;
+            SpawnManager.onRequestFromPool -= ActivateObjFromPool;
         }
 
         private void GeneratePools()

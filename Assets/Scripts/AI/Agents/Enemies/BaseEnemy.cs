@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using SpaceShooterV3.Scripts.Interfaces;
+using SpaceShooterV3.Scripts.Managers;
 
 namespace SpaceShooterV3.Scripts.AI.Agents.Enemies
 {
@@ -9,15 +10,14 @@ namespace SpaceShooterV3.Scripts.AI.Agents.Enemies
         protected Vector3 _spawnPos;
         protected Vector3 _targetPos;
 
-        protected Vector2 _minMaxZ = new Vector2(-15f, 45f);
-        protected Vector2 _minMaxX = new Vector2(-33.5f, 33.5f);
+        protected Vector2 _minMaxZ;// = new Vector2(-15f, 45f);
+        //protected Vector2 _minMaxX = new Vector2(-33.5f, 33.5f);
 
         protected float _randomX;
 
         protected bool _targetDetected = false;
 
         public static Action<GameObject, Vector3> onSetTargetPos;
-        public static Action<GameObject, float> onDamageReceived;
 
         protected virtual void Awake()
         {
@@ -26,12 +26,15 @@ namespace SpaceShooterV3.Scripts.AI.Agents.Enemies
 
         protected virtual void Start()
         {
-            
+            _minMaxZ = new Vector2(BoundaryManager.Instance.CalculateLowerBounds().z,
+               BoundaryManager.Instance.CalculateUpperBounds().z);
+
+            SpawnEnemy();
         }
 
         protected void OnEnable()
         {
-            SpawnEnemy();
+           
         }
 
         protected void OnDisable()
@@ -46,54 +49,25 @@ namespace SpaceShooterV3.Scripts.AI.Agents.Enemies
 
         private void SpawnEnemy()
         {
-            _randomX = UnityEngine.Random.Range(_minMaxX.x, _minMaxX.y);
+            _spawnPos = BoundaryManager.Instance.CalculateUpperBounds();
+            
+            OnSetTargetPos(_spawnPos.x);
 
-            _spawnPos = new Vector3(_randomX, 0, _minMaxZ.y);
-
-            OnSetTargetPos();
-
-            transform.position = _spawnPos;
+            transform.position =  _spawnPos;
         }
 
-        private void OnSetTargetPos()
+        private void OnSetTargetPos(float xAxisPos)
         {
-            _targetPos = new Vector3(_spawnPos.x, 0f, _minMaxZ.x);
+            _targetPos = new Vector3(xAxisPos, 0f, BoundaryManager.Instance.CalculateLowerBounds().z);
 
             onSetTargetPos?.Invoke(this.gameObject, _targetPos);
         }
 
         private void CheckIfInBounds(float zPos)
-        {
+        {            
             if (zPos < _minMaxZ.x)
             {
                 SpawnEnemy();
-            }
-        }
-
-        private void OnDamageReceived(GameObject damagedObj, float damageAmount)
-        {
-            onDamageReceived?.Invoke(damagedObj, damageAmount);
-        }
-
-        protected virtual void OnTriggerEnter(Collider other)
-        {
-            var tag = other.tag;
-            
-            switch (tag)
-            {
-                case "Player":
-                    //Destroy(this.gameObject);
-                    break;
-
-                case "MainFire":
-                    other.gameObject.SetActive(false);
-
-                    OnDamageReceived(this.gameObject, 15f);
-                    
-                    break;
-
-                default:
-                    break;
             }
         }
     }

@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using SpaceShooterV3.Scripts.Interfaces;
 
 namespace SpaceShooterV3.Scripts.Weapons
 {
-    public class Harpoon : MonoBehaviour
+    public class Harpoon : MonoBehaviour//, IDamager
     {
         [SerializeField]
         private float _speed = 15f;

@@ -6,7 +6,7 @@ namespace SpaceShooterV3.Scripts.Interfaces
     {
         float Health { get; }
         float Armor { get; }
-        void DamageReceived(GameObject damagedObj, float damageAmount);
+        void DamageReceived(float damageAmount);
     }
 }
 
