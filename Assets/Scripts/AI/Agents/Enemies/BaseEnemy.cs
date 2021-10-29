@@ -29,7 +29,7 @@ namespace SpaceShooterV3.Scripts.AI.Agents.Enemies
             _minMaxZ = new Vector2(BoundaryManager.Instance.CalculateLowerBounds().z,
                BoundaryManager.Instance.CalculateUpperBounds().z);
 
-            SpawnEnemy();
+            //SpawnEnemy();
         }
 
         protected void OnEnable()

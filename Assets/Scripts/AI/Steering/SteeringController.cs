@@ -55,6 +55,8 @@ namespace SpaceShooterV3.Scripts.AI.Steering
 
         private float _elapsedTime = 0f;
 
+        [SerializeField]
+        private Rigidbody _rigidBody;
         private void Awake()
         {
             agent = this;
@@ -62,6 +64,11 @@ namespace SpaceShooterV3.Scripts.AI.Steering
 
         private void OnEnable()
         {
+            if (TryGetComponent(out Rigidbody rigidbody))
+            {
+                _rigidBody = rigidbody;
+            }
+
             ObjDetection.onDetectionRadiusTriggered += ObjDetected;
             BaseEnemy.onSetTargetPos += SetTargetPos;
         }

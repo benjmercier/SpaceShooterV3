@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 494360554}
+  _yOffset: 0.1
 --- !u!1 &463156582
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +683,10 @@ PrefabInstance:
     - target: {fileID: 6737851657179486401, guid: b09daa7b1b68f94418d2c5553b8734e7, type: 3}
       propertyPath: m_Name
       value: DeepSeaPredator
+      objectReference: {fileID: 0}
+    - target: {fileID: 6737851657179486401, guid: b09daa7b1b68f94418d2c5553b8734e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7911634515478764375, guid: b09daa7b1b68f94418d2c5553b8734e7, type: 3}
       propertyPath: m_RootOrder

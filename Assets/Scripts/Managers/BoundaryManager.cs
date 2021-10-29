@@ -11,6 +11,7 @@ namespace SpaceShooterV3.Scripts.Managers
         private Camera _camera;
 
         private Vector3 _boundaryVector;
+        private Vector3 _viewToWorldPoint;
 
         [SerializeField, Range(0f, 0.5f)]
         private float _yOffset = 0.1f;
@@ -99,8 +100,11 @@ namespace SpaceShooterV3.Scripts.Managers
             
             _boundaryVector.x = Mathf.Clamp01(_boundaryVector.x);
             _boundaryVector.y = Mathf.Clamp01(_boundaryVector.y);
-            
-            return _camera.ViewportToWorldPoint(_boundaryVector);
+
+            _viewToWorldPoint = _camera.ViewportToWorldPoint(_boundaryVector);
+            _viewToWorldPoint.y = 0;
+
+            return _viewToWorldPoint;
         }
 
         public Vector3 CalculateUpperBounds()
